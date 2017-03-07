@@ -16,7 +16,7 @@ You can find a documentation of all the non-Octopod-specific settings on the [Co
 
 Jekyll is highly customizable, if you are into coding (or even just want to get into it), read the [Jekyll Documentation](https://jekyllrb.com/docs/home/). It is very detailed and quite easy to grasp.
 
-First of all, your new podcast episode needs audio data. Octopod assumes that your ready to use audio files stay within the `episodes` directory in your projects root.
+First of all, your new podcast episode needs audio data. Octopod assumes that your ready to use audio files stay within the `_episodes` directory in your projects root.
 
 {% highlight shell %}
 $ cp ~/my_superduper_audio_files/ocp001.m4a episodes
@@ -68,6 +68,13 @@ The part between the "---" and the "---" is the [YAML front matter](http://jekyl
 This is where all the metadata is stored. Below the YAML frontmatter is the area (body) where you can write down your post's content (like the show notes and stuff). 
 This strange looking {% raw %}`{{ podigee_player page }}`{% endraw %} thingy is the [Liquid filter](./liquid-filters), 
 which represents the iframe where the web player will be included later.
+
+You can also change the theme from the default. To do so, you have to override the SASS variables that jekyll-bootflat uses. If you just have a few changes you want to make,
+you can put these directly into ```_sass/_overrides.scss```. However, if you wish to make an entire theme and possibly share this theme with others, we recommend that you create
+a subdirectory in ```_sass``` named after your theme and to only import that theme in the ```_overrides.scss``` file. A sample theme for this is included.
+
+To find out which variables exist, look at the [jekyll-bootflat](http://bootflat.github.io/) documentation and the bootflat and bootstrap files in octopod, which you can find
+[here](https://github.com/jekyll-octopod/jekyll-bootflat/tree/master/_sass). 
 
 When all this work is done you are ready to take a first look.  
 The following command generates your site and starts a local webserver for a preview. You can check your new podcasting website by opening [http://localhost:4000](http://localhost:4000).
